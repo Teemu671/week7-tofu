@@ -35,6 +35,16 @@ resource "openstack_networking_secgroup_rule_v2" "http" {
   remote_ip_prefix  = "0.0.0.0/0"
 }
 
+resource "openstack_networking_secgroup_rule_v2" "https" {
+  security_group_id = openstack_networking_secgroup_v2.web.id
+  direction         = "ingress"
+  ethertype         = "IPv4"
+  protocol          = "tcp"
+  port_range_min    = 443
+  port_range_max    = 443
+  remote_ip_prefix  = "0.0.0.0/0"
+}
+
 # Network port for the VM in the project network, protected by the security group
 resource "openstack_networking_port_v2" "web" {
   name               = "${var.name_prefix}-port"

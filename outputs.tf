@@ -10,5 +10,5 @@ output "web_server_url" {
 
 output "ssh_connection_command" {
   description = "SSH terminal command."
-  value       = "ssh -i ${var.ssh_public_key_path} ubuntu@${openstack_networking_floatingip_v2.web.address}"
+  value       = "ssh -i ${replace(var.ssh_public_key_path, ".pub", "")} ubuntu@${openstack_networking_floatingip_v2.web.address}"
 }
