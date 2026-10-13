@@ -1,0 +1,28 @@
+package_update: true
+
+packages:
+  - apache2
+
+write_files:
+  - path: /var/www/html/index.html
+    owner: www-data:www-data
+    permissions: '0644'
+    defer: true
+    content: |
+      <!DOCTYPE html>
+      <html lang="en">
+      <head>
+          <meta charset="UTF-8">
+          <title>${student_name}'s Server</title>
+      </head>
+      <body>
+          <div class="container">
+              <h1>Hello from ${student_name}!</h1>
+              <p>${page_message}</p>
+          </div>
+      </body>
+      </html>
+
+runcmd:
+  - systemctl enable apache2
+  - systemctl start apache2

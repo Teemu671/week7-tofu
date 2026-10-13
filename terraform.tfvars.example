@@ -1,0 +1,4 @@
+project_network  = "your-cpouta-project-network-name"
+ssh_allowed_cidr = "your-public-ip-address/32"
+student_name     = "Your Name"
+page_message     = "Hello from OpenTofu!"
